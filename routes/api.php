@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignupController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +27,8 @@ Route::prefix('auth')->group(function (){
            return "hello";
        });
    });
+
+    Route::post('/login', [LoginController::class, 'login']);
 
 });
 
