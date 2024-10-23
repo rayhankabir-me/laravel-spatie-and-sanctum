@@ -12,12 +12,12 @@ class RolePermissionTableSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run()
+    public function run():void
     {
         $adminRole = Role::find(1);
         $adminRole?->givePermissionTo(Permission::all());
 
-        $branchManager = Role::find(6);
+        $branchManager = Role::find(3);
         if ($branchManager) {
             $branchManagerPermissions = [
                 ['name' => 'dashboard'],
@@ -54,7 +54,7 @@ class RolePermissionTableSeeder extends Seeder
             $branchManager->givePermissionTo($branchManagerPermissions);
         }
 
-        $posOperatorManager = Role::find(7);
+        $posOperatorManager = Role::find(4);
         if ($posOperatorManager) {
             $posOperatorManagerPermissions = [
                 ['name' => 'dashboard'],
