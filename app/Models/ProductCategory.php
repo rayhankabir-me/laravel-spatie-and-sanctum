@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -50,11 +51,6 @@ class ProductCategory extends Model implements HasMedia
         $this->addMediaConversion('thumb')->crop('crop-center', 168, 122)->keepOriginalImageFormat()->sharpen(10);
         $this->addMediaConversion('cover')->crop('crop-center', 640, 960)->keepOriginalImageFormat()->sharpen(10);
     }
-
-//    public function products(): \Illuminate\Database\Eloquent\Relations\HasMany
-//    {
-//        return $this->hasMany(Product::class)->where(['status' => 5]);
-//    }
 
     public function parent_category(): BelongsTo
     {

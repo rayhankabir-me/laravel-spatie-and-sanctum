@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\SignupController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -26,10 +27,18 @@ Route::prefix('auth')->group(function (){
        Route::post('/signup', function (){
            return "hello";
        });
-   });
+});
 
     Route::post('/login', [LoginController::class, 'login']);
 
+});
+
+Route::prefix('admin')->group(function () {
+    Route::prefix('setting')->group(function () {
+        Route::prefix('product-category')->group(function () {
+            Route::get('/', [ProductCategoryController::class, 'index']);
+        });
+    });
 });
 
 
